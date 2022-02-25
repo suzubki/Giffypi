@@ -1,0 +1,9 @@
+body {
+  background-color: rgb(17, 15, 15);
+}
+
+.gifs-container {
+  /* background-color: aliceblue; */
+  width: 80vw;
+  margin: 0 auto;
+}
