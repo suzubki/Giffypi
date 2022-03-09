@@ -11,7 +11,10 @@ import { Card } from "reactstrap";
 // CSS
 import "./CardGif.css";
 
-export const CardGif = ({ data }) => {
+export const CardGif = ({ objectData }) => {
+
+  let { data, loading } = objectData
+
   // Slick settings
   const settings = {
     infinite: true,
@@ -55,15 +58,16 @@ export const CardGif = ({ data }) => {
   return (
     <>
       <Slider {...settings}>
-        {data.map((gif) => (
-          <Card key={gif.id}>
-            <img
-              alt="Card cap"
-              className="card_image--margin"
-              src={gif.images.original.url}
-              width="90%"
-            />
-          </Card>
+        {
+        loading && data.map((gif) => (
+            <Card key={gif.id}>
+              <img
+                alt="Card cap"
+                className="card_image--margin"
+                src={gif.images.original.url}
+                width="90%"
+              />
+            </Card>
         ))}
       </Slider>
     </>

@@ -3,7 +3,7 @@ import { Gifs } from "./routes/gifs";
 import {Title} from './components/Title';
 // import Search from "./components/Search";
 import "./main.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";  
 
 function App() {
   return (
