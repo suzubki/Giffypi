@@ -10,11 +10,12 @@
 
 # testing
 /coverage
-.test.js
-.test.js.snap
 
 # production
 /build
+
+# dotenv enviroment variables files
+.env
 
 # misc
 .DS_Store
