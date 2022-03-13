@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Input, Button, Form, FormGroup } from "reactstrap";
 import { useSearchParams } from "react-router-dom";
 
@@ -13,6 +13,8 @@ export const Search = () => {
     data: [],
     loading: true,
   });
+
+  const isMounted = useRef(true)
 
   //  useSearchParams
   let [searchParams, setSearchParams] = useSearchParams();
@@ -36,6 +38,10 @@ export const Search = () => {
         loading: true,
       })
     })
+
+    return () => {       
+      isMounted.current = false
+    }
   }, []);
 
   // getGifsSearch
@@ -49,10 +55,16 @@ export const Search = () => {
 
     if (giphy){
       getGifsSearch(giphy, abortController).then(res => {
-        setFatherData({
-          data: [...res],
-          loading: true
-        })
+
+        
+        setTimeout(() => {
+          if ( isMounted.current ) {
+            setFatherData({
+              data: [...res],
+              loading: true
+            })  
+          }
+        }, 3000);
       })
     };
     
@@ -65,7 +77,7 @@ export const Search = () => {
     <div>
       <Form onSubmit={handleSubmit} className="mb-4" >
         <FormGroup>
-          <Input defaultValue={giphy || ""} name="giphy" />
+          <Input defaultValue={giphy || ""} name="giphy" autoComplete="off" />
         </FormGroup>
         <Button type="submit" color="primary">
           Search

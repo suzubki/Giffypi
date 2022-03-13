@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'
 
 // React slick (carousel)
 import Slider from "react-slick";
@@ -73,5 +74,14 @@ export const CardGif = ({ objectData }) => {
     </>
   );
 };
+
+
+CardGif.propTypes = {
+  objectData: PropTypes.object.isRequired
+}
+
+CardGif.defaultProps = {
+  objectData: {data: [], loading: Boolean}
+}
 
 export default CardGif;
