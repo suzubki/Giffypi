@@ -10,12 +10,13 @@
 
 # testing
 /coverage
+/src/tests
 
 # production
 /build
 
 # dotenv enviroment variables files
-.env
+*.env
 
 # misc
 .DS_Store
